@@ -1,0 +1,93 @@
+"Games"
+{
+	"cstrike"
+	{
+		"Keys"
+		{
+			"NON_JUMP_VELOCITY"	"140.0"
+		}
+
+		"Signatures"
+		{
+			"CGameMovement::TryPlayerMove"
+			{
+				"library"		"server"
+				"windows"		"\x81\xEC\xE0\x00\x00\x00\x53\x55\x56"
+				"linux"			"@_ZN13CGameMovement13TryPlayerMoveEP6VectorP10CGameTrace"
+			}
+
+			"CGameMovement::StepMove"
+			{
+				"library"		"server"
+				"windows"		"\x83\xEC\x3C\x8B\x44\x24\x40\x8B\x50\x04"
+				"linux"			"@_ZN13CGameMovement8StepMoveER6VectorR10CGameTrace"
+			}
+		}
+
+		"Offsets"
+		{
+			// Class member offsets
+
+			"CMoveData::m_vecVelocity"
+			{
+				"windows"	"64"
+				"linux"		"64"
+			}
+
+			"CMoveData::m_outStepHeight"
+			{
+				"windows"	"112"
+				"linux"		"112"
+			}
+
+			"CMoveData::m_vecAbsOrigin"
+			{
+				"windows"	"100"
+				"linux"		"100"
+			}
+		}
+
+		"Functions"
+		{
+			"CGameMovement::TryPlayerMove"
+			{
+				"signature"		"CGameMovement::TryPlayerMove"
+				"callconv"		"thiscall"
+				"hooktype"		"raw"
+				"this"			"address"
+				"return"		"int"
+				"arguments"
+				{
+					"pFirstDest"
+					{
+						"type"	"vectorptr"
+					}
+					"pFirstTrace"
+					{
+						"type"	"objectptr"
+					}
+				}
+			}
+
+			"CGameMovement::StepMove"
+			{
+				"signature"		"CGameMovement::StepMove"
+				"callconv"		"thiscall"
+				"hooktype"		"raw"
+				"this"			"address"
+				"return"		"void"
+				"arguments"
+				{
+					"vecDestination"
+					{
+						"type"	"vectorptr"
+					}
+					"trace"
+					{
+						"type"	"objectptr"
+					}
+				}
+			}
+		}
+	}
+}
